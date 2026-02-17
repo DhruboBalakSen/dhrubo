@@ -30,11 +30,11 @@ const AboutSkillsSection = ({ skills }: AboutSkillsSectionProps) => {
             <div className="pt-4 space-y-2">
               <div className="flex justify-between items-center text-sm border-b border-border pb-2 hover:bg-muted/50 p-2 rounded transition-colors">
                 <span>MCA - PES University</span>
-                <span className="text-muted-foreground">8.36 CGPA</span>
+                <span className="text-muted-foreground">2023 - 2025</span>
               </div>
               <div className="flex justify-between items-center text-sm border-b border-border pb-2 hover:bg-muted/50 p-2 rounded transition-colors">
                 <span>BCA - Acharya Inst.</span>
-                <span className="text-muted-foreground">8.31 CGPA</span>
+                <span className="text-muted-foreground">2020 - 2023</span>
               </div>
             </div>
           </div>

@@ -95,7 +95,7 @@ export default function TerminalFooter() {
                             placeholder="Type a command..."
                             autoComplete="off"
                             autoCorrect="off"
-                            autoCapitalize="off"
+                            autoCapitalize="none"
                             spellCheck="false"
                         />
                     </form>

@@ -32,7 +32,7 @@ const Page = () => {
         <Dither
           waveColor={[0.5, 0.5, 0.5]}
           disableAnimation={false}
-          enableMouseInteraction
+          enableMouseInteraction={false}
           mouseRadius={0.3}
           colorNum={4}
           waveAmplitude={0.3}

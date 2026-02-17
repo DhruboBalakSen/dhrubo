@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import confetti from "canvas-confetti";
+
 export function useKonamiCode() {
     const [activated, setActivated] = useState(false);
 
@@ -47,6 +49,12 @@ export function KonamiToast() {
     useEffect(() => {
         if (activated) {
             setShow(true);
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ["#22c55e", "#000000", "#ffffff"],
+            });
             const timer = setTimeout(() => setShow(false), 5000);
             return () => clearTimeout(timer);
         }
@@ -56,15 +64,20 @@ export function KonamiToast() {
         <AnimatePresence>
             {show && (
                 <motion.div
-                    initial={{ y: 50, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: 50, opacity: 0 }}
-                    className="fixed bottom-8 right-8 z-[100] bg-green-500 text-black font-mono font-bold px-6 py-4 rounded-lg shadow-[0_0_20px_rgba(34,197,94,0.6)] border-2 border-green-400 rotate-2"
+                    initial={{ y: 50, opacity: 0, scale: 0.9 }}
+                    animate={{ y: 0, opacity: 1, scale: 1 }}
+                    exit={{ y: 50, opacity: 0, scale: 0.9 }}
+                    className="fixed bottom-8 right-8 z-[100] bg-black/90 text-green-500 font-mono font-bold px-6 py-4 rounded-lg border border-green-500/50 shadow-[0_0_30px_rgba(34,197,94,0.3)] backdrop-blur-sm"
                 >
-                    <div className="text-xl">GOD MODE ENABLED</div>
-                    <div className="text-xs opacity-80 mt-1">Unlimited Coffee Glitch Active</div>
+                    <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                        <div className="text-xl tracking-tighter">SYSTEM OVERRIDE</div>
+                    </div>
+                    <div className="text-xs text-green-400/70 mt-1 pl-5">
+                        &gt; 0xCAFFEE_ACCESS_GRANTED
+                    </div>
                 </motion.div>
             )}
         </AnimatePresence>
-    )
+    );
 }

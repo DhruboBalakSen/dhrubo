@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()_+";
 
@@ -23,7 +22,6 @@ export default function DecryptedText({
     useOriginalCharsOnly = false,
 }: DecryptedTextProps) {
     const [displayText, setDisplayText] = useState(text);
-    const [isHovered, setIsHovered] = useState(false);
     const iterations = useRef(0);
     const interval = useRef<NodeJS.Timeout>(null);
 
@@ -57,20 +55,9 @@ export default function DecryptedText({
         return () => clearInterval(interval.current!);
     }, [text]);
 
-    const handleMouseEnter = () => {
-        setIsHovered(true);
-        startAnimation();
-    };
-
-    const handleMouseLeave = () => {
-        setIsHovered(false);
-    };
-
     return (
         <span
             className={className}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
         >
             {displayText}
         </span>
